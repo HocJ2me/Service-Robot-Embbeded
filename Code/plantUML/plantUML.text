@@ -1,0 +1,59 @@
+@startuml
+
+[*] --> Start
+
+state Start {
+  [*] --> DiChuyenDenBan : ChonBan
+}
+
+state DiChuyenDenBan {
+  [*] --> DiemA : Chon_Ban1_Ban2
+}
+
+state DiChuyenDenBan {
+  [*] --> DiemB : Chon_Ban3_Ban4
+}
+
+state DiChuyenDenBan {
+  [*] --> DiemC : Chon_Ban5
+}
+
+state GapVatCan {
+  [*] --> DungLaiKhongKhacPhuc : 15s
+}
+state DiemA {
+  [*] --> QuayVeDiemBatDau : KhachHangAnNutBack
+}
+state DiemB {
+  [*] --> QuayVeDiemBatDau : KhachHangAnNutBack
+}
+state DiemC {
+  [*] --> QuayVeDiemBatDau : KhachHangAnNutBack
+}
+
+
+
+state DungLaiKhongKhacPhuc {
+  [*] --> DiChuyenDenBan : KhoiPhucSauDungLai
+}
+
+state PinThap {
+  [*] --> DiChuyenDenSac : PinThap
+}
+
+state DiChuyenDenSac {
+  [*] --> SacPin : DiChuyenDenSac
+}
+
+state SacPin {
+  [*] --> QuayVeDiemBatDau : SacPin
+}
+
+DiChuyenDenBan --> GapVatCan : GapVatCan
+QuayVeDiemBatDau --> GapVatCan : GapVatCan
+DiChuyenDenSac--> GapVatCan : GapVatCan
+
+DiChuyenDenSac --> SacPin : ToiDiemSac
+PinThap --> DiChuyenDenSac : DiemBatDau
+
+@enduml
